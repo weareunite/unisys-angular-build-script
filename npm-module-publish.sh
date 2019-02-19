@@ -7,7 +7,7 @@ GREEN='\033[01;32m'
 NC='\033[0m' # No Color
 
 echo -e ${YELLOW}[UNISYS] Starting packaging for $1 ${NC}
-cd projects/$1
+cd ../projects/$1
 PACKAGE_VERSION=$(cat package.json \
   | grep version \
   | head -1 \
@@ -30,6 +30,7 @@ cp -r src/index.html ../../dist/$1
 fi
 echo -e ${YELLOW}[UNISYS] Adding GIT files ${NC}
 git add .
+git clean
 echo -e ${YELLOW}[UNISYS] Creating commit ${NC}
 git commit -m "$newVersion"
 cd ..
