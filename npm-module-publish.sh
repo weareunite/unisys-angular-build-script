@@ -20,13 +20,14 @@ echo -e ${YELLOW}[UNISYS] Building component ${NC}
 ng build $1
 echo -e ${YELLOW}[UNISYS] Changing version in project to $newVersion ${NC}
 npm version $newVersion --no-git-tag-version --allow-same-version
-echo -e ${RED}[UNISYS] Copy assets of $1 to dist folder? Type yes for download ${NC}
+echo -e ${RED}[UNISYS] Copy assets of $1 to dist folder? Type yes for copy ${NC}
 read assets
 if [ $assets == "yes" ]; then
 cp -r src/assets ../../dist/$1
 fi
 if [ $1 == "unisys-angular-core" ]; then
 cp -r src/index.html ../../dist/$1
+cp -r gulpfile.js ../../dist/$1
 fi
 echo -e ${YELLOW}[UNISYS] Adding GIT files ${NC}
 git add .
